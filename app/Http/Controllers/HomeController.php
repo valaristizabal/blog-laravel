@@ -6,15 +6,26 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller{
 
-    public function mostrarMensaje(){
-        return "Bienvenido a la página principal del blog";
+
+    public function mostrarVentanaPrincipal(){
+        return view("home");
+    }
+
+    public function mostrarPostsGeneral(){
+        return view("posts.index");
+    }
+
+    public function mostrarPostEspecificoTradicional($post){
+        return view("posts.postsEspecificos", [
+            "post" => $post
+        ]);
+    }
+
+    public function mostrarPostEspecificoCompact($post){
+        return view("posts.postsEspecificos", compact("post"));
     }
 
     public function mostrarCategoriaExistente($post, $category = null){
-        if($category == null){
-            return "Estamos en el post {$post}";
-        } else {
-            return "Estamos en el post {$post} que cuenta con la categoría {$category}";
+            return view("posts.postsAndCategories",compact("post", "category"));
         }
-    }
 }
