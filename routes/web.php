@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlantillaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, "mostrarVentanaPrincipal"]);
@@ -17,3 +18,5 @@ Route::get("/posts/{post}/{category}", function($post, $category){
 });*/
 
 Route::get('posts/{post}/{category?}', [HomeController::class, "mostrarCategoriaExistente"]);
+
+Route::get("/plantillas", [PlantillaController::class, "mostrarVentanaPrincipal"]);
